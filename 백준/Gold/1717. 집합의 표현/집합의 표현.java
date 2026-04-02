@@ -23,12 +23,8 @@ public class Main {
             int b = Integer.parseInt(st.nextToken());
 
             if(op == 0) union(a, b);
-            else {
-                if(find(a) == find(b)) System.out.println("YES");
-                else System.out.println("NO");
-            }
+            else System.out.println(find(a) == find(b) ? "YES" : "NO");
         }
-
     }
 
     static int find(int x) {
