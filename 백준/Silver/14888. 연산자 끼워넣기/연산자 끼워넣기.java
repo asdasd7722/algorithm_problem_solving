@@ -23,13 +23,13 @@ public class Main {
             op[i] = Integer.parseInt(st.nextToken());
         }
 
-        solve(0, arr[0], arr[0]);
+        solve(0, arr[0]);
 
         System.out.println(Max);
         System.out.println(Min);
     }
 
-    static void solve(int cnt, int sum, int prev) {
+    static void solve(int cnt, int sum) {
         if(cnt == N - 1) {
             Max = Math.max(Max, sum);
             Min = Math.min(Min, sum);
@@ -39,12 +39,10 @@ public class Main {
         for(int i = 0; i < 4; ++i) {
             if(op[i] > 0) {
                 op[i]--;
-                if(i == 0) solve(cnt + 1, sum += arr[cnt + 1], sum);
-                else if(i == 1) solve(cnt + 1, sum -= arr[cnt + 1], sum);
-                else if(i == 2) solve(cnt + 1, sum *= arr[cnt + 1], sum);
-                else solve(cnt + 1, sum /= arr[cnt + 1], sum);
-
-                sum = prev;
+                if(i == 0) solve(cnt + 1, sum + arr[cnt + 1]);
+                else if(i == 1) solve(cnt + 1, sum - arr[cnt + 1]);
+                else if(i == 2) solve(cnt + 1, sum * arr[cnt + 1]);
+                else solve(cnt + 1, sum / arr[cnt + 1]);
                 op[i]++;
             }
         }
